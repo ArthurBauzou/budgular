@@ -26,3 +26,16 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Roadmap
+
+Ce projet utilise MongoDb et express en plus d'angular. https://robomongo.org/ pour avoir un aperçu de la base mongo.
+Les exemples sont sur https://github.com/skalv.
+
+Nous aurons principalement deux types d'objets : 
+ - user (name, id, pssword)
+ - transaction (title, id, value, type, user)
+
+Le site doit commencer sur une page de login, depuis laquelle on peut créer un nouvel utilisateur.
+Une fois loggé, on accède à la page de profil qui contient une liste des transactions afiliées à la personne concernée.
+Depuis cette page on peut créer, supprimer et modifier les transctions.
