@@ -45,3 +45,11 @@ De mon côté je vais faire une page d'accueil qui charge les utilisateurs et le
 Si déjà on fait ça on est bien.
 
 //Test commit 1.0
+
+// j'arrive pas à lancer le projet, j'ai cet erreur 
+//Error: ENOENT: no such file or directory, stat 'c:\budgular\dist\index.html'
+    at Error (native)
+	
+	// En vérifiant je trouve que y'a plus de dossier dist!
+	
+//On regardera ça ensemble demain et se lancer sur le projet à fond, aujourd hui je suis passé plusieurs fois pour les entretiens!
