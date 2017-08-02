@@ -33,8 +33,8 @@ Ce projet utilise MongoDb et express en plus d'angular. https://robomongo.org/ p
 Les exemples sont sur https://github.com/skalv.
 
 Nous aurons principalement deux types d'objets : 
- - user (name, id, pssword)
- - transaction (title, id, value, type, user)
+ - user (name, id, password)
+ - transaction (id, title, value, date, type, user)
 
 Le site doit commencer sur une page de login, depuis laquelle on peut créer un nouvel utilisateur.
 Une fois loggé, on accède à la page de profil qui contient une liste des transactions afiliées à la personne concernée.
