@@ -45,13 +45,3 @@ Depuis cette page on peut créer, supprimer et modifier les transctions.
 Commençons par nous séparer les tâches basiquement. On fait une partie "api" qui va agir comme un webservice. Pour commencer on devrait faire en sorte que l'adresse localhost:3000/api/users revoie un json des utilisateurs.
 De mon côté je vais faire une page d'accueil qui charge les utilisateurs et les affiche dans une liste, et un bouton "add user" qui fait apparaître un formulaire d'inscription. Ce formulaire va envoyer des données en post sur localhost/api/users pour l'inscription.
 Si déjà on fait ça on est bien.
-
-//Test commit 1.0
-
-// j'arrive pas à lancer le projet, j'ai cet erreur 
-//Error: ENOENT: no such file or directory, stat 'c:\budgular\dist\index.html'
-    at Error (native)
-	
-	// En vérifiant je trouve que y'a plus de dossier dist!
-	
-//On regardera ça ensemble demain et se lancer sur le projet à fond, aujourd hui je suis passé plusieurs fois pour les entretiens!
