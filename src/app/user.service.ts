@@ -24,4 +24,11 @@ export class UserService {
       .then(response => response.json() as User[])
       .catch(this.handleError);
   }
+
+  addUser(user:User):Promise<User> {
+    return this.http.post(this.usersUrl, JSON.stringify(user), {headers: this.headers})
+      .toPromise()
+      .then(res => res.json() as User)
+      .catch(this.handleError);
+  }
 }

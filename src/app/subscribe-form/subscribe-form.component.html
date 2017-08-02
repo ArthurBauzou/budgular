@@ -1,0 +1,20 @@
+<form [formGroup]="subForm" (ngSubmit)="onSubmit(subForm.value)">
+
+  <input type="text" 
+    placeholder="nom"
+    [formControl]="subForm.controls['name']"
+  >
+    
+  <input type="text" 
+    placeholder="password" 
+    [formControl]="subForm.controls['pass']"
+  >
+
+  <input type="text" 
+    placeholder="password" 
+    [formControl]="subForm.controls['pass2']"
+  >
+
+  <input type="submit" value="Créer l'utilisateur">
+
+</form>

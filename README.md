@@ -32,6 +32,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 Ce projet utilise MongoDb et express en plus d'angular. https://robomongo.org/ pour avoir un aperçu de la base mongo.
 Les exemples sont sur https://github.com/skalv.
 
+Article sur les reactiveForms : https://scotch.io/tutorials/angular-2-form-validation
+
 Nous aurons principalement deux types d'objets : 
  - user (name, id, password)
  - transaction (id, title, value, date, type, user)
