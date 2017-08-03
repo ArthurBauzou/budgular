@@ -1,20 +1,39 @@
 <form [formGroup]="subForm" (ngSubmit)="onSubmit(subForm.value)">
 
-  <input type="text" 
-    placeholder="nom"
-    [formControl]="subForm.controls['name']"
-  >
-    
-  <input type="text" 
-    placeholder="password" 
-    [formControl]="subForm.controls['pass']"
-  >
+  <label>
+    <input type="text" 
+      placeholder="nom"
+      [formControl]="subForm.controls['name']"
+    >
+    <div class="error" *ngIf="subErrors.name">
+      {{ subErrors.name }}
+    </div>
+  </label>
 
-  <input type="text" 
-    placeholder="password" 
-    [formControl]="subForm.controls['pass2']"
-  >
+  <label>
+    <input type="password" 
+      placeholder="password" 
+      [formControl]="subForm.controls['pass']"
+    >
+    <div class="error" *ngIf="subErrors.pass">
+      {{ subErrors.pass }}
+    </div>
+  </label>
 
-  <input type="submit" value="Créer l'utilisateur">
+  <label>
+    <input type="password" 
+      placeholder="confirmation password" 
+      [formControl]="subForm.controls['pass2']"
+      [ngClass]="{'ng-valid': !subForm.hasError('differentPassword'), 'ng-invalid': subForm.hasError('differentPassword')}"
+    >
+    <!-- <div class="error" *ngIf="subErrors.pass2">
+      {{ subErrors.pass2 }}
+    </div> -->
+    <div class="error" *ngIf="subForm.hasError('differentPassword') && subForm.controls['pass2'].touched">
+      {{ validationMessages.pass2.differentPassword }}
+    </div>
+  </label>
+
+  <input type="submit" value="Créer l'utilisateur" [disabled]="!subForm.valid">
 
 </form>

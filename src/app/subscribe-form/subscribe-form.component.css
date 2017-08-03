@@ -1,0 +1,49 @@
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 40%;
+  margin: 24px auto;
+}
+
+label input {
+  font-size: 18px;
+  width: 90%;
+  line-height: 32px;
+  border: none;
+  border-left: 3px solid silver;
+  margin: 4px;
+  padding-left: 8px;
+}
+
+label input:focus {
+  border-left: 3px solid gray;
+  margin-left: 8px;
+  border-bottom: 1px solid silver;
+}
+
+input[type="submit"] {
+  margin: 12px auto;
+  padding: 4px 8px;
+  width: 50%;
+  border-radius: 4px;
+  background: silver;
+  border: none;
+}
+
+input[type="submit"]:hover {
+  background: gray;
+}
+
+div.error {
+  font-size: 0.8rem;
+  color: crimson;
+  margin-bottom: 12px;
+}
+
+input.ng-invalid.ng-touched, input.ng-invalid.ng-touched:focus {
+  border-color: crimson;
+}
+
+input.ng-valid.ng-touched, input.ng-valid.ng-touched:focus {
+  border-color: limegreen;
+}
