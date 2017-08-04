@@ -134,16 +134,16 @@ export class SubscribeFormComponent implements OnInit {
       })
   }
 
+  // remet la base de donnée des utilisateurs sur les valeurs de base
   resetUsers() :void {
     console.log('reset')
     this.userService
       .deleteAllUsers()
       .then(() => {
         for (let defaultUser of this.defaultBase) {
+          console.log(defaultUser)
           this.userService.addUser(defaultUser)
         }
-      }).then(() => {
-        this.subscribeEvent.emit(null)
       })
   }
 

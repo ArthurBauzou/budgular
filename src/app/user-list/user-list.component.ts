@@ -10,7 +10,7 @@ import { UserService } from '../user.service'
 })
 export class UserListComponent implements OnInit {
   userlist: User[]
-
+  subscribeForm:boolean = false
   constructor(private userService: UserService) { }
 
   getUsers() :void {
@@ -22,6 +22,14 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers()
+  }
+
+  switchSubForm():void {
+    if (!this.subscribeForm) {
+      this.subscribeForm = true;
+    } else {
+      this.subscribeForm = false;
+    }
   }
 
 }
