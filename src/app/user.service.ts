@@ -31,4 +31,21 @@ export class UserService {
       .then(res => res.json() as User)
       .catch(this.handleError);
   }
+
+  deleteUser(id:string):Promise<User> {
+    const url = `${this.usersUrl}/${id}`
+    return this.http.delete(url, {headers: this.headers})
+      .toPromise()
+      .then(res => res.json() as User)
+      .catch(this.handleError);
+  }
+
+  deleteAllUsers():Promise<User[]> {
+    const url = `${this.usersUrl}/all`
+    const head = new Headers({'Content-Type': 'text/plain'})
+    return this.http.delete(url, {headers: head})
+      .toPromise()
+      .then(res => res.json() as User[])
+      .catch(this.handleError)
+  }
 }

@@ -26,6 +26,14 @@ router.post('/', function(req, res) {
 
 })
 
+router.delete('/all', function(req, res) {
+  console.log('node dit bonjour')
+  userModel.deleteMany((true), (err, users) => {
+    if (err) res.send(err)
+    res.json(users)
+  })
+})
+
 router.delete('/:id', function(req, res) {
   userModel.deleteOne({ _id: req.params.id }, function(err, user){
     if (err) res.send(err)

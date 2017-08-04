@@ -11,7 +11,7 @@ function passConfirm(pass:string, pass2:string) :ValidatorFn {
   return(group:FormGroup): {[key:string]:any} => {
     const a = group.controls[pass].value
     const b = group.controls[pass2].value
-    if (a && b && a !== b) {
+    if (a !== b) {
       return {'differentPassword': true}
     }
   }
@@ -100,6 +100,24 @@ export class SubscribeFormComponent implements OnInit {
     }
   }
 
+  defaultBase:User[] = [
+    {
+      name: 'Picsou',
+      pass: 'McDuck',
+      _id: ''
+    },
+    {
+      name: 'Donald',
+      pass: 'wawawa',
+      _id: ''
+    },
+    {
+      name: 'Gontran',
+      pass: 'lucky777',
+      _id: ''
+    }
+  ]
+
   ngOnInit() {
     this.createUsernames();
   }
@@ -108,11 +126,23 @@ export class SubscribeFormComponent implements OnInit {
   onSubmit(data:any) : void {
     let newuser:any = data
     delete newuser.pass2
-    console.log('submit test', newuser)
     this.userService
       .addUser(newuser)
       .then(() => {
         this.usernames.push(newuser.name.toLowerCase())
+        this.subscribeEvent.emit(null)
+      })
+  }
+
+  resetUsers() :void {
+    console.log('reset')
+    this.userService
+      .deleteAllUsers()
+      .then(() => {
+        for (let defaultUser of this.defaultBase) {
+          this.userService.addUser(defaultUser)
+        }
+      }).then(() => {
         this.subscribeEvent.emit(null)
       })
   }
