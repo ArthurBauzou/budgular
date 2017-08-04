@@ -144,7 +144,9 @@ export class SubscribeFormComponent implements OnInit {
           console.log(defaultUser)
           this.userService.addUser(defaultUser)
         }
+        this.subscribeEvent.emit(null)
       })
+    
   }
 
 }

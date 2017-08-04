@@ -9,6 +9,7 @@ import { UserService } from '../user.service'
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
+  selectedUser:User
   userlist: User[]
   subscribeForm:boolean = false
   constructor(private userService: UserService) { }
@@ -25,11 +26,24 @@ export class UserListComponent implements OnInit {
   }
 
   switchSubForm():void {
+    this.selectedUser = null
     if (!this.subscribeForm) {
-      this.subscribeForm = true;
+      this.subscribeForm = true
     } else {
-      this.subscribeForm = false;
+      this.subscribeForm = false
     }
+  }
+
+  selectUser(user:User):void {
+    console.log(user)
+    this.selectedUser = user
+    this.subscribeForm = false
+    console.log(this.selectedUser)
+  }
+
+  subscribeEvent() {
+    this.subscribeForm = false
+    this.getUsers()
   }
 
 }

@@ -62,8 +62,34 @@ ul li div.user:hover, button:hover {
   margin-left: 12px;
 }
 
+div.login {
+  /* margin: 16px; */
+  /* border: 2px groove white; */
+  padding-top: 32px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+}
 
-subscribe.subzone {
+div.login label input {
+  font-size: 24px;
+  width: 50%;
+  line-height: 48px;
+  border: none;
+  border-left: 3px solid silver;
+  margin: 12px;
+  padding-left: 8px;
+}
+
+div.login label input:focus {
+  border-left: 3px solid gray;
+  margin-left: 8px;
+  border-bottom: 1px solid silver;
+  outline: none;
+}
+
+
+subscribe.subzone, div.login {
   width: 100%;
   flex-basis: 70%;
 }

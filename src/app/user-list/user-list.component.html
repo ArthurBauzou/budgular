@@ -1,6 +1,6 @@
 <div class="container">
 <ul>
-  <li *ngFor="let user of userlist">
+  <li *ngFor="let user of userlist" (click)="selectUser(user)">
     <div class="user">
       <span class="badge">{{user.name | slice:0:1}}</span>
       <p>{{user.name}}</p>
@@ -8,5 +8,19 @@
   </li>
   <button (click)="switchSubForm()">Créer un compte</button>
 </ul>
+
+<div *ngIf="selectedUser" class="login">
+  <div>{{ selectedUser.name }}</div>
+  <label>
+    <input type="password" 
+      placeholder="mot de passe"
+      autofocus
+    >
+    <div class="error">
+      <!-- {{  }} -->
+    </div>
+  </label>
+</div>
+
 <subscribe class="subzone" *ngIf="subscribeForm" (subscribeEvent)="getUsers()"></subscribe>
 </div>

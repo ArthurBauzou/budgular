@@ -1,17 +1,23 @@
 form {
   display: flex;
   flex-flow: column nowrap;
-  width: 40%;
-  margin: 24px auto;
+  align-content: center;
+  /* width: 90%; 
+  margin: 24px auto; */
+}
+
+label {
+  width: 60%;
+  margin: 4px auto;
 }
 
 label input {
-  font-size: 18px;
-  width: 90%;
-  line-height: 32px;
+  width: 100%;
+  font-size: 24px;
+  line-height: 48px;
   border: none;
   border-left: 3px solid silver;
-  margin: 4px;
+  border-bottom: 1px hidden silver;
   padding-left: 8px;
 }
 
