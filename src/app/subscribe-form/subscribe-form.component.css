@@ -19,6 +19,7 @@ label input:focus {
   border-left: 3px solid gray;
   margin-left: 8px;
   border-bottom: 1px solid silver;
+  outline: none;
 }
 
 input[type="submit"] {

@@ -9,7 +9,7 @@ import { User } from "./classes"
 @Injectable()
 export class UserService {
 
-  private headers = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:3000/api'});
+  private headers = new Headers({'Content-Type': 'application/json'});
   private usersUrl:string = 'http://localhost:3000/api/users';
   private handleError(error: any): Promise<any> {
     console.error('Une erreur est survenue avec user.service', error);

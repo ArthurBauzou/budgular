@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 
 import { User } from '../classes';
@@ -22,6 +22,8 @@ function passConfirm(pass:string, pass2:string) :ValidatorFn {
 })
 export class SubscribeFormComponent implements OnInit {
 
+  @Output() subscribeEvent:EventEmitter<any> = new EventEmitter()
+  @Input() users:User[]
   subForm:FormGroup
 
   constructor(
@@ -29,8 +31,8 @@ export class SubscribeFormComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.subForm = fb.group({
-      name: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(24)]],
-      pass: ['', [Validators.required, Validators.minLength(6)]],
+      name: ['', [Validators.required, Validators.maxLength(24)]],
+      pass: ['', [Validators.required, Validators.minLength(4)]],
       pass2: ''
     }, {validator: passConfirm('pass', 'pass2')})
     // cette ligne observe le formulaire et revoie son contenu à chaque fois qu'une valeur change. C'est un Observable.
@@ -62,12 +64,11 @@ export class SubscribeFormComponent implements OnInit {
   validationMessages:object = {
     'name': {
       'required': 'Vous devez entrer un nom',
-      'minlength': 'Votre nom doit comporter plus de 3 caractères',
-      'maxlength': 'Votre nom ne peut éxceder 24 caractères',
+      'maxlength': 'Votre nom ne peut éxceder 24 caractères'
     },
     'pass': {
       'required': 'Vous devez entrer un mot de passe',
-      'minlength': 'Un mot de passe doit contenir au moins 6 caractères'
+      'minlength': 'Un mot de passe doit contenir au moins 4 caractères'
     },
     'pass2': {
       'differentPassword': 'Veuillez confirmer votre mot de passe'
@@ -77,8 +78,13 @@ export class SubscribeFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(value:any) : void {
-    console.log('submit test', value)
+  onSubmit(data:any) : void {
+    let newuser:any = data
+    delete newuser.pass2
+    console.log('submit test', newuser)
+    this.userService
+      .addUser(newuser)
+      .then(() => this.subscribeEvent.emit(null))
   }
 
 }

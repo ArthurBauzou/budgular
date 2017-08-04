@@ -1,4 +1,4 @@
-<form [formGroup]="subForm" (ngSubmit)="onSubmit(subForm.value)">
+<form [formGroup]="subForm" (ngSubmit)="onSubmit(subForm.value); subForm.reset()">
 
   <label>
     <input type="text" 
@@ -12,7 +12,7 @@
 
   <label>
     <input type="password" 
-      placeholder="password" 
+      placeholder="mot de passe" 
       [formControl]="subForm.controls['pass']"
     >
     <div class="error" *ngIf="subErrors.pass">
@@ -22,7 +22,7 @@
 
   <label>
     <input type="password" 
-      placeholder="confirmation password" 
+      placeholder="confirmez votre mot de passe" 
       [formControl]="subForm.controls['pass2']"
       [ngClass]="{'ng-valid': !subForm.hasError('differentPassword'), 'ng-invalid': subForm.hasError('differentPassword')}"
     >
