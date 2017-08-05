@@ -2,8 +2,6 @@ form {
   display: flex;
   flex-flow: column nowrap;
   align-content: center;
-  /* width: 90%; 
-  margin: 24px auto; */
 }
 
 label {
@@ -17,22 +15,20 @@ label input {
   line-height: 48px;
   border: none;
   border-left: 3px solid silver;
-  border-bottom: 1px hidden silver;
   padding-left: 8px;
 }
 
 label input:focus {
   border-left: 3px solid gray;
-  margin-left: 8px;
-  border-bottom: 1px solid silver;
   outline: none;
 }
 
 input[type="submit"], button {
-  margin: 12px auto;
-  padding: 4px 8px;
-  width: 50%;
-  border-radius: 4px;
+  margin: 0 auto;
+  margin-top: 24px;
+  padding: 12px 8px;
+  font-size: 16px;
+  width: 196px;
   background: silver;
   border: none;
 }
@@ -51,6 +47,6 @@ input.ng-invalid.ng-touched, input.ng-invalid.ng-touched:focus {
   border-color: crimson;
 }
 
-input.ng-valid.ng-touched, input.ng-valid.ng-touched:focus {
+input.ng-valid.ng-dirty, input.ng-valid.ng-dirty:focus {
   border-color: limegreen;
 }

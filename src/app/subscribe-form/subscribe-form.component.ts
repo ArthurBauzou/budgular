@@ -11,6 +11,7 @@ function passConfirm(pass:string, pass2:string) :ValidatorFn {
   return(group:FormGroup): {[key:string]:any} => {
     const a = group.controls[pass].value
     const b = group.controls[pass2].value
+    console.log(b)
     if (a !== b) {
       return {'differentPassword': true}
     }

@@ -10,17 +10,26 @@
 </ul>
 
 <div *ngIf="selectedUser" class="login">
-  <div>{{ selectedUser.name }}</div>
-  <label>
-    <input type="password" 
-      placeholder="mot de passe"
-      autofocus
-    >
-    <div class="error">
-      <!-- {{  }} -->
-    </div>
-  </label>
+  <form action="">
+    <label>
+      <div>{{ selectedUser.name | uppercase }}</div>
+      <input type="password" 
+        placeholder="mot de passe"
+        autofocus
+      >
+      <div class="error">
+        <!-- {{  }} -->
+      </div>
+    </label>
+
+    <input type="submit" value="Connexion">
+
+  </form>
 </div>
 
-<subscribe class="subzone" *ngIf="subscribeForm" (subscribeEvent)="getUsers()"></subscribe>
+<div *ngIf="!selectedUser && !subscribeForm" class="welcome">
+  <p>Bienvenue :)</p>
+</div>
+
+<subscribe class="subzone" *ngIf="subscribeForm" (subscribeEvent)="subscribeEvent()"></subscribe>
 </div>

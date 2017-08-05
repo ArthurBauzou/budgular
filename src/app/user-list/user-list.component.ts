@@ -42,8 +42,9 @@ export class UserListComponent implements OnInit {
   }
 
   subscribeEvent() {
-    this.subscribeForm = false
     this.getUsers()
+    this.subscribeForm = false
+    console.log('subevent activé')
   }
 
 }
