@@ -10,12 +10,15 @@
 </ul>
 
 <div *ngIf="selectedUser" class="login">
-  <form action="">
+  <form (ngSubmit)="login({_id: selectedUser._id, pass:loginPass})">
+
     <label>
       <div>{{ selectedUser.name | uppercase }}</div>
       <input type="password" 
         placeholder="mot de passe"
-        autofocus
+        myAutofocus
+        [(ngModel)]="loginPass"
+        name="login"
       >
       <div class="error">
         <!-- {{  }} -->

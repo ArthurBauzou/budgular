@@ -7,16 +7,19 @@ const mongoose = require('mongoose')
 
 // Get our API routes
 const api = require('./server/routes/api');
+let routeUsers = require('./server/routes/users')
+let routeLogin = require('./server/routes/login')
 
 const app = express();
 
 // Mongoose init
-mongoose.connect('mongodb://localhost/budgular');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log("DB connectée !")
 });
+
+mongoose.connect('mongodb://localhost/budgular', {useMongoClient : true});
 
 // Parsers for POST data
 app.use(bodyParser.json())
@@ -33,10 +36,10 @@ app.use(function(req, res, next) {
   next();
 });
 
-// Set our api routes
+// Set routes
 app.use('/api', api)
-let routeUsers = require('./server/routes/users')
 app.use('/api/users', routeUsers)
+app.use('/login', routeLogin)
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { User } from '../classes'
 import { UserService } from '../user.service'
+// import { FormGroup } from '@angular/forms'
 
 @Component({
   selector: 'userlist',
@@ -12,6 +13,7 @@ export class UserListComponent implements OnInit {
   selectedUser:User
   userlist: User[]
   subscribeForm:boolean = false
+  loginPass:string = ''
   constructor(private userService: UserService) { }
 
   getUsers() :void {
@@ -35,16 +37,21 @@ export class UserListComponent implements OnInit {
   }
 
   selectUser(user:User):void {
-    console.log(user)
+    this.loginPass = ''
     this.selectedUser = user
     this.subscribeForm = false
-    console.log(this.selectedUser)
   }
 
   subscribeEvent() {
     this.getUsers()
     this.subscribeForm = false
-    console.log('subevent activé')
   }
 
+  login(data:any) :void{
+    console.log(data)
+    console.log (this.loginPass)
+    this.userService
+      .login(data)
+      .then(res => {})
+  }
 }

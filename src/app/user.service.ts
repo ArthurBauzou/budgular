@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -11,6 +12,7 @@ export class UserService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private usersUrl:string = 'http://localhost:3000/api/users';
+  private loginUrl:string = 'http://localhost:3000/login';
   private handleError(error: any): Promise<any> {
     console.error('Une erreur est survenue avec user.service', error);
     return Promise.reject(error.message || error);
@@ -22,6 +24,14 @@ export class UserService {
     return this.http.get(this.usersUrl)
       .toPromise()
       .then(response => response.json() as User[])
+      .catch(this.handleError);
+  }
+
+  getUser(id:string):Promise<User> {
+    const url = `${this.usersUrl}/${id}`
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as User)
       .catch(this.handleError);
   }
 
@@ -46,6 +56,15 @@ export class UserService {
     return this.http.delete(url, {headers: head})
       .toPromise()
       .then(res => res.json() as User[])
+      .catch(this.handleError)
+  }
+
+  login(data:any):Promise<any> {
+    return this.http.post(this.loginUrl, JSON.stringify(data), {headers: this.headers})
+      .toPromise()
+      .then(res => {
+        console.log(res)
+      })
       .catch(this.handleError)
   }
 }

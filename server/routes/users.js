@@ -3,19 +3,25 @@ const router = express.Router();
 
 const userModel = require('../models/user')
 
-
-
 router.get('/', function(req, res) {
-  userModel.find((err, users) => {
+  userModel
+  .find({name: /.+/})
+  .select('_id name')
+  .exec((err, users) => {
     if (err) res.send(err);
-    users.forEach((usr, i) => {
-      if(usr.name === '') {
-        users.splice(i, 1)
-      }
-    })
     res.json(users);
   })
 })
+
+// au cas ou j'en aurais besoin mais pour l'instant je ne pense pas
+// router.get('/:id', function(req, res) {
+//   userModel
+//   .findOne({_id: req.params.id})
+//   .exec((err, user) => {
+//     if (err) res.send(err);
+//     res.json(user);
+//   })
+// })
 
 router.post('/', function(req, res) {
   
@@ -24,7 +30,7 @@ router.post('/', function(req, res) {
     "pass": req.body.pass
   })
 
-  newUser.save(function(err, user){
+newUser.save(function(err, user){
     if (err) res.send(err)
     res.json(user)
   })
